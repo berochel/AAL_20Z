@@ -41,6 +41,7 @@ class Dict:
     probability_table = []
 
     def generate_words(self, f):
+        output_list = []
         output = ""
         for x in range(f):
             i = 0
@@ -60,8 +61,9 @@ class Dict:
                     if rand_number < 33:
                         output += list(alphabet.keys())[list(alphabet.values()).index(rand_number)]
                     j = rand_number
-            print(output)
+            output_list += [output]
             output = ""
+        return output_list
 
     def __init__(self):
         self.probability_table = [[0.0 for i in range(34)] for j in range(33)]
@@ -90,7 +92,6 @@ class Dict:
                     i = 33  # code for the "end of word" sign
                     self.probability_table[j][i] += 1
                     # print(str(i) + " " + str(j))
-                    # displaying the words
                     # print(word)
         # print('\n'.join([''.join(['{:8.3f}'.format(item) for item in row])
         #                 for row in self.probability_table]))
